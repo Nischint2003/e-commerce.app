@@ -1,3 +1,6 @@
+import 'package:e_shop/constants/global_variable.dart';
+import 'package:e_shop/features/auth/screens/auth_screen.dart';
+import 'package:e_shop/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,16 +15,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: const ColorScheme.light(
+          primary: GlobalVariables.secondaryColor,
+        ),
         useMaterial3: true,
+        scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+        ),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Demo'),
-          ),
-          body: const Center(
-            child: Text('Flutter Demo Home Page'),
-          )),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: const AuthScreen(),
     );
   }
 }
